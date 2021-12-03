@@ -12,6 +12,8 @@
     enableAutosuggestions = true;
   };
 
+  services.trayer.enable = true;
+
   home.packages = with pkgs; [
     alacritty
     amarena-theme
@@ -37,6 +39,7 @@
     wine-staging
     winetricks
     xarchiver
+    xmobar
     xorg.libXrender
   ];
 

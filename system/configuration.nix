@@ -211,7 +211,6 @@ in
 
   environment.systemPackages = with pkgs; [ # Search with "nix search <appname>"
     alacritty
-    appimage-run
     dmenu
     git
     htop
@@ -220,11 +219,8 @@ in
     qutebrowser
     ranger
     spaceship-prompt
-    trayer
     vim
     wget
-    xdg-user-dirs
-    xmobar
   ];
 
 # ------------------------------------------------------------------------
