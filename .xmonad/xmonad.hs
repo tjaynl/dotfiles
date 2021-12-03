@@ -41,6 +41,7 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.GridVariants
 import XMonad.Layout.BinarySpacePartition
+import XMonad.Layout.Fullscreen
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -50,6 +51,7 @@ import qualified Data.Map        as M
 ------------------------------------------------------------------------
 myModMask = mod4Mask -- Sets modkey to super/windows key
 myTerminal = "alacritty" -- Sets default terminal app
+myFileManager = "nemo" -- Sets deault File Manager
 myBorderWidth = 2 -- Sets border width for windows
 myNormalBorderColor = "#333333"
 myFocusedBorderColor = "#FFCD00"
@@ -60,7 +62,7 @@ myppHiddenNoWindows = "#A6DFEB"
 myppTitle = "#FDF6E3"
 myppUrgent = "#DC322F"
 --myWorkspaces = ["1","2","3","4","5","6","7","8","9"] -- Sets workspaces
-myWorkspaces = [" dev ", " www ", " sys ", " gfx ", " chat "]
+myWorkspaces = [" dev ", " www ", " sys ", " game ", " chat ", " gfx "]
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
@@ -88,7 +90,7 @@ myStartupHook = do
 -- Layouts:
 ------------------------------------------------------------------------
 
-myLayout = avoidStruts (full ||| tiled ||| grid ||| bsp)
+myLayout = avoidStruts (noBorders Full ||| tiled ||| grid ||| bsp)
   where
      -- full
      full = renamed [Replace "Full"] 
@@ -123,10 +125,12 @@ myLayout = avoidStruts (full ||| tiled ||| grid ||| bsp)
 
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
-    , className =? "Gimp"           --> doShift ( myWorkspaces !! 3)
+    , className =? "Gimp-2.10"      --> doFloat
     , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore 
+    , resource  =? "kdesktop"       --> doIgnore
+    , className =? "Steam"          --> doShift (myWorkspaces !! 3)
+    , className =? "Gimp-2.10"      --> doShift (myWorkspaces !! 5) 
+    , className =? "Inkscape"       --> doShift (myWorkspaces !! 5)
     , isFullscreen --> doFullFloat    
     ]
 
@@ -206,7 +210,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Launch apps
     , ((modm, xK_w), spawn "Navigator")
-    , ((modm, xK_f), spawn "pcmanfm")
+    , ((modm, xK_f), spawn myFileManager)
     , ((modm, xK_c), spawn "code")
     , ((modm, xK_g), spawn "gitkraken")
     ]
@@ -272,8 +276,8 @@ main = do
     mouseBindings      = myMouseBindings,
 
     -- hooks, layouts
-    layoutHook         = myLayout,
-    manageHook         = ( isFullscreen --> doFullFloat ) <+> manageDocks <+> myManageHook,
+    layoutHook         = smartBorders $ myLayout,
+    manageHook         = ( isFullscreen --> doFullFloat ) <+> manageDocks <+> fullscreenManageHook <+> myManageHook,
     handleEventHook    = handleEventHook def <+> XMonad.Hooks.EwmhDesktops.fullscreenEventHook,
     startupHook        = myStartupHook,
     logHook            = dynamicLogWithPP $ xmobarPP

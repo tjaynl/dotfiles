@@ -19,18 +19,20 @@
     amarena-theme
     arandr
     brave
+    cinnamon.nemo
     firefox
+    inkscape
     killall
     lxappearance
     git
     git-crypt
     gitkraken
+    gimp
     gnupg
     networkmanager_dmenu
     nitrogen
     nodejs
     pavucontrol
-    pcmanfm
     picom
     protonup
     spaceship-prompt
