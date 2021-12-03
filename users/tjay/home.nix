@@ -14,9 +14,9 @@
 
   home.packages = with pkgs; [
     alacritty
+    amarena-theme
     arandr
     brave
-    orchis-theme
     firefox
     killall
     lxappearance
@@ -33,7 +33,6 @@
     protonup
     spaceship-prompt
     rofi
-    tint2
     vscode-with-extensions
     wine-staging
     winetricks
