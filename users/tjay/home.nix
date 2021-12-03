@@ -17,26 +17,28 @@
   home.packages = with pkgs; [
     alacritty
     amarena-theme
+    appimage-run
     arandr
     brave
     cinnamon.nemo
     firefox
-    inkscape
-    killall
-    lxappearance
     git
     git-crypt
     gitkraken
     gimp
     gnupg
+    inkscape
+    killall
+    lxappearance
+    mailspring
     networkmanager_dmenu
     nitrogen
     nodejs
     pavucontrol
     picom
     protonup
-    spaceship-prompt
     rofi
+    spaceship-prompt
     vscode-with-extensions
     wine-staging
     winetricks

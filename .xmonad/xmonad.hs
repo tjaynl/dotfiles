@@ -129,6 +129,7 @@ myManageHook = composeAll
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "Steam"          --> doShift (myWorkspaces !! 3)
+    , className =? "discord"        --> doShift (myWorkspaces !! 4)
     , className =? "Gimp-2.10"      --> doShift (myWorkspaces !! 5) 
     , className =? "Inkscape"       --> doShift (myWorkspaces !! 5)
     , isFullscreen --> doFullFloat    
@@ -209,7 +210,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_q), spawn "xmonad --recompile; xmonad --restart")
 
     -- Launch apps
-    , ((modm, xK_w), spawn "Navigator")
+    , ((modm, xK_w), spawn "Firefox")
     , ((modm, xK_f), spawn myFileManager)
     , ((modm, xK_c), spawn "code")
     , ((modm, xK_g), spawn "gitkraken")

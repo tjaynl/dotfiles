@@ -121,6 +121,7 @@ in
   services = {
     flatpak.enable = true; # Flatpak
     gvfs.enable = true; # Auto mount external drives
+    gnome.gnome-keyring.enable = true;
     # printing.enable = true; # Enable CUPS to print documents.
     # openssh.enable = true; # Enable the OpenSSH daemon.
   };
@@ -214,6 +215,7 @@ in
     dmenu
     git
     htop
+    libsecret
     networkmanager_dmenu
     polkit_gnome
     qutebrowser
