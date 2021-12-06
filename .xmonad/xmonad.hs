@@ -259,8 +259,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
 main :: IO ()
 main = do
-  xmproc0 <- spawnPipe ("xmobar -x 0 $HOME/.config/xmobar/xmobarrc")
-  xmproc1 <- spawnPipe ("xmobar -x 1 $HOME/.config/xmobar/xmobar2rc")
+  xmproc0 <- spawnPipe ("xmobar -x 0 $HOME/.config/xmobar/main-xmobarrc")
+  xmproc1 <- spawnPipe ("xmobar -x 1 $HOME/.config/xmobar/xmobarrc")
   xmonad $ docks $ ewmh def {
     -- simple stuff
     terminal           = myTerminal,
