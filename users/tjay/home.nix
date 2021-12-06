@@ -1,50 +1,67 @@
 { config, pkgs, ... }:
 
+let 
+    # Import zsh config file
+    zshsettings = import ./configs/zsh/zsh.nix;
+    nvimsettings = import ./configs/nvim/nvim.nix;
+in 
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "tjay";
   home.homeDirectory = "/home/tjay";
 
-  nixpkgs.config.allowUnfree = true;
+  # Source extra files that are too big for this one 
+    programs.zsh = zshsettings pkgs;
+    programs.neovim = nvimsettings pkgs;
 
-  programs.zsh = {
-    enableAutosuggestions = true;
+  # Settings for XDG user directory, to declutter home directory
+  xdg.userDirs = {
+      enable = true;
+      documents = "$HOME/Documents";
+      download = "$HOME/Downloads";
+      videos = "$HOME/Videos";
+      music = "$HOME/Music";
+      pictures = "$HOME/Pictures";
+      desktop = "$HOME/Desktop";
+      publicShare = "$HOME/Public";
+      templates = "$HOME/Templates";
   };
 
+  # Allow unfree packages in home-manager
+  nixpkgs.config.allowUnfree = true;
+
+  # Enable trayer
   services.trayer.enable = true;
 
+  # My packages
   home.packages = with pkgs; [
     alacritty
-    amarena-theme
-    appimage-run
-    arandr
-    brave
-    cinnamon.nemo
-    firefox
-    git
-    git-crypt
-    gitkraken
-    gimp
-    gnupg
-    inkscape
-    killall
-    lxappearance
-    mailspring
     networkmanager_dmenu
-    nitrogen
-    nodejs
-    pavucontrol
     picom
     protonup
-    rofi
-    spaceship-prompt
-    vscode-with-extensions
-    wine-staging
-    winetricks
-    xarchiver
-    xmobar
-    xorg.libXrender
+    font-awesome
+
+    # Rice/Desktop
+    amarena-theme dunst rofi spaceship-prompt xmobar
+
+    # Command-line tools
+    ffmpeg gnupg killall libnotify pass update-nix-fetchgit
+
+    # GUI applications
+    firefox gitkraken lxappearance mailspring nitrogen pavucontrol pcmanfm vscode-with-extensions xarchiver
+
+    # Design tools
+    gimp
+    inkscape
+
+    # Development
+    git git-crypt gcc nodejs python3
+
+    # Language servers for neovim; change these to whatever languages you code in
+    # Please note: if you remove any of these, make sure to also remove them from nvim/config/nvim/lua/lsp.lua!!
+    rnix-lsp
+    sumneko-lua-language-server
   ];
 
   # This value determines the Home Manager release that your
