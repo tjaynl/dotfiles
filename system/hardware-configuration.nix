@@ -8,18 +8,18 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "uas" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/84d27ca8-eaf7-4209-9d75-21fc7fd61db5";
+    { device = "/dev/disk/by-uuid/444ae062-729d-4d72-90a2-657996485845";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/13AD-CAEB";
+    { device = "/dev/disk/by-uuid/B913-29C6";
       fsType = "vfat";
     };
 
@@ -35,4 +35,6 @@
       fsType = "ext4";
       options = [ "defaults" "rw" ];
     };
+
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

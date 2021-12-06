@@ -157,14 +157,6 @@ in
 # ------------------------------------------------------------------------
 
   programs = {
-    # zsh
-    zsh = {
-      enable = true;
-      promptInit = ''
-        autoload -U promptinit && promptinit && prompt spaceship
-      '';
-    };
-
     # Games
     gamemode.enable = true;
     steam.enable = true;
@@ -191,19 +183,14 @@ in
 # SYSTEM FONTS
 # ------------------------------------------------------------------------
 
-  fonts = {
-    fonts = with pkgs; [
-      font-awesome
-      powerline-fonts
-      fira
-      fira-code
-      fira-code-symbols
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-    ];
-  };
-
+  # Install fonts
+  fonts.fonts = with pkgs; [
+    jetbrains-mono
+    open-fonts
+    noto-fonts
+    roboto
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  ];
 # ------------------------------------------------------------------------
 # PACKAGES
 # ------------------------------------------------------------------------
