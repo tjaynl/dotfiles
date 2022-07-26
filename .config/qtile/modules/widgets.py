@@ -47,7 +47,7 @@ group_box_settings = {
     "block_highlight_text_color": colors[6],
     "highlight_method": "block",
     "this_current_screen_border": colors[14],
-    "this_screen_border": colors[7],
+    "this_screen_border": colors[2],
     "other_current_screen_border": colors[14],
     "other_screen_border": colors[14],
     "foreground": colors[1],

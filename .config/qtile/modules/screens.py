@@ -17,8 +17,8 @@ screens = [
                 widget.TextBox(
                     text = ("  "),
                     font = "font-awesome",
-                    fontsize = 20,
-                    foreground = colors[13],
+                    fontsize = 24,
+                    foreground = colors[5],
                     background = colors[0],
                     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("rofi -show drun")}
                 ),
@@ -200,9 +200,6 @@ screens = [
             # border_color="#3b4252",
             background=colors[0],
         ),
-        bottom=bar.Gap(18),
-        left=bar.Gap(18),
-        right=bar.Gap(18),
     ),
 
     Screen(
@@ -215,8 +212,8 @@ screens = [
                 widget.TextBox(
                     text = ("  "),
                     font = "font-awesome",
-                    fontsize = 20,
-                    foreground = colors[13],
+                    fontsize = 24,
+                    foreground = colors[5],
                     background = colors[0],
                     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("rofi -show drun")}
                 ),
@@ -396,8 +393,5 @@ screens = [
             # border_color="#3b4252",
             background=colors[0],
         ),
-        bottom=bar.Gap(8),
-        left=bar.Gap(8),
-        right=bar.Gap(8),
     ),
 ]
