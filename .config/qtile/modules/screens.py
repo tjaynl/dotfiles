@@ -17,7 +17,8 @@ screens = [
                 widget.TextBox(
                     text = ("  "),
                     font = "font-awesome",
-                    fontsize = 24,
+                    fontsize = 20,
+                    padding = 8,
                     foreground = colors[5],
                     background = colors[0],
                     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("rofi -show drun")}
@@ -63,8 +64,7 @@ screens = [
                 widget.Spacer(),
                 widget.TextBox(
                     text = (""),
-                    font= " font-awesome",
-                    fontsize = 16,
+                    **text_box_settings,
                     foreground = colors[12],
                     background = colors[0],
                 ),
@@ -97,7 +97,7 @@ screens = [
                     **text_box_settings,
                     foreground=colors[8],
                     background=colors[14],
-                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(terminal + ' -e pavucontrol')},
+                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("pavucontrol")},
                 ),
                 widget.Volume(
                     foreground=colors[8],
@@ -118,10 +118,10 @@ screens = [
                     **rounded_start,
                 ),
                 widget.TextBox(
-                    text=(""),
+                    text = (""),
                     **text_box_settings,
-                    foreground=colors[7],
-                    background=colors[14],
+                    foreground = colors[7],
+                    background = colors[14],
                 ),
                 widget.Net(
                     interface = 'enp3s0',
@@ -135,10 +135,10 @@ screens = [
                 ),
 
                 widget.Sep(
-                    linewidth=0,
-                    foreground=colors[2],
-                    padding=10,
-                    size_percent=50,
+                    linewidth = 0,
+                    foreground = colors[2],
+                    padding = 10,
+                    size_percent = 50,
                 ),
 
 
@@ -146,25 +146,25 @@ screens = [
                     **rounded_start,
                 ),
                 widget.TextBox(
-                    text=(""),
+                    text = (""),
                     **text_box_settings,
-                    foreground=colors[5],
-                    background=colors[14],
+                    foreground = colors[5],
+                    background = colors[14],
                 ),
                 widget.Clock(
-                    format="%a, %b %d",
-                    background=colors[14],
-                    foreground=colors[5],
+                    format = "%a, %b %d",
+                    background = colors[14],
+                    foreground = colors[5],
                 ),
                 widget.TextBox(
                     **rounded_end,
                 ),
 
                 widget.Sep(
-                    linewidth=0,
-                    foreground=colors[2],
-                    padding=10,
-                    size_percent=50,
+                    linewidth = 0,
+                    foreground = colors[2],
+                    padding = 10,
+                    size_percent = 50,
                 ),
 
                 widget.TextBox(
@@ -173,13 +173,13 @@ screens = [
                 widget.TextBox(
                     text = (""),
                     **text_box_settings,
-                    foreground=colors[4],
-                    background=colors[14],
+                    foreground = colors[4],
+                    background = colors[14],
                 ),
                 widget.Clock(
                     format = '%H:%M',
-                    foreground=colors[4],
-                    background=colors[14],
+                    foreground = colors[4],
+                    background = colors[14],
                 ),
                 widget.TextBox(
                     **rounded_end,
@@ -189,16 +189,17 @@ screens = [
                     default_text = "  ",
                     countdown_format = '[ {} seconds ]',
                     max_chars = 10,
-                    fontsize = 16,
-                    padding = 10,
-                    foreground = colors[3]
+                    fontsize = 20,
+                    padding = 8,
+                    foreground = colors[3],
                 ),
             ],
-            size = 40,
-            margin= 0,
-            # border_width=[0, 0, 3, 0],
-            # border_color="#3b4252",
-            background=colors[0],
+            size = 36,
+            # border_width = [0, 0, 3, 0],
+            # border_color = "#3b4252",
+            opacity = 20,
+            margin = [10, 10, 5, 10],
+            background = colors[0],
         ),
     ),
 
@@ -212,7 +213,8 @@ screens = [
                 widget.TextBox(
                     text = ("  "),
                     font = "font-awesome",
-                    fontsize = 24,
+                    fontsize = 20,
+                    padding = 8,
                     foreground = colors[5],
                     background = colors[0],
                     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("rofi -show drun")}
@@ -258,8 +260,7 @@ screens = [
                 widget.Spacer(),
                 widget.TextBox(
                     text = (""),
-                    font= " font-awesome",
-                    fontsize = 16,
+                    **text_box_settings,
                     foreground = colors[12],
                     background = colors[0],
                 ),
@@ -283,33 +284,7 @@ screens = [
                     **rounded_start,
                 ),
                 widget.TextBox(
-                    text = (""),
-                    **text_box_settings,
-                    foreground=colors[8],
-                    background=colors[14],
-                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(terminal + ' -e pavucontrol')},
-                ),
-                widget.Volume(
-                    foreground=colors[8],
-                    background=colors[14],
-                    padding_x = 10,
-                ),
-                widget.TextBox(
-                    **rounded_end,
-                ),
-
-                widget.Sep(
-                    linewidth=0,
-                    foreground=colors[2],
-                    padding=10,
-                    size_percent=50,
-                ),
-
-                widget.TextBox(
-                    **rounded_start,
-                ),
-                widget.TextBox(
-                    text=(""),
+                    text=(""),
                     **text_box_settings,
                     foreground=colors[7],
                     background=colors[14],
@@ -338,15 +313,15 @@ screens = [
                     **rounded_start,
                 ),
                 widget.TextBox(
-                    text=(""),
+                    text = (""),
                     **text_box_settings,
-                    foreground=colors[5],
-                    background=colors[14],
+                    foreground = colors[5],
+                    background = colors[14],
                 ),
                 widget.Clock(
-                    format="%a, %b %d",
-                    background=colors[14],
-                    foreground=colors[5],
+                    format = "%a, %b %d",
+                    background = colors[14],
+                    foreground = colors[5],
                 ),
                 widget.TextBox(
                     **rounded_end,
@@ -378,20 +353,19 @@ screens = [
                     **rounded_end,
                 ),
 
-                widget.QuickExit(
-                    default_text = "  ",
-                    countdown_format = '[ {} seconds ]',
-                    max_chars = 10,
-                    fontsize = 16,
-                    padding = 10,
-                    foreground = colors[8]
+                widget.Sep(
+                    linewidth=0,
+                    foreground=colors[2],
+                    padding=10,
+                    size_percent=50,
                 ),
             ],
-            size = 40,
-            margin= 0,
-            # border_width=[0, 0, 3, 0],
-            # border_color="#3b4252",
-            background=colors[0],
+            size = 36,
+            # border_width = [0, 0, 3, 0],
+            # border_color = "#3b4252",
+            opacity = 20,
+            margin = [10, 10, 5, 10],
+            background = colors[0],
         ),
     ),
 ]

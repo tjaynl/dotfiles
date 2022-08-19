@@ -7,10 +7,7 @@ groups = [
     Group("2", label="2"),
     Group("3", label="3"),
     Group("4", label="4", matches=[Match(wm_class=["Steam"])]),
-    Group("5", label="5", matches=[
-                          Match(wm_class=["discord"]),
-                          Match(wm_class=["guilded"])
-                          ]),
+    Group("5", label="5", matches=[Match(wm_class=["discord"])]),
 ]
 
 for i in groups:

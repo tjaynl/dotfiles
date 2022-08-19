@@ -1,24 +1,30 @@
 from libqtile.lazy import lazy
 from libqtile.config import Key
+from libqtile.utils import guess_terminal
 
 mod = "mod4"
-terminal = "alacritty"
+alt = "mod1"
+terminal = guess_terminal()
+applauncher = "rofi -show drun"
 browser = "firefox"
 volume = "pavucontrol"
-filemanager = "pcmanfm"
-editor = "geany"
+filemanager = terminal + " -e ranger"
+editor = terminal + "-e nvim"
 mediaplayer = "vlc"
 screenshot = "flameshot"
 
 keys = [
     Key([mod], "Return", lazy.spawn(terminal)),
-    Key([mod], "a", lazy.spawn("rofi -show drun")),
+    Key([mod], "a", lazy.spawn(applauncher)),
     Key([mod], "w", lazy.spawn(browser)),
     Key([mod], "v", lazy.spawn(volume)),
     Key([mod], "e", lazy.spawn(filemanager)),
     Key([mod], "t", lazy.spawn(editor)),
     Key([mod], "m", lazy.spawn(mediaplayer)),
     Key([], "Print", lazy.spawn(screenshot)),
+
+    # Launch Terminal Apps
+    Key(["control", alt], "h", lazy.spawn(terminal + " -e htop"), desc="Launch htop in terminal"),
 
     Key([mod], "f", lazy.window.toggle_floating()),
     Key([mod, "shift"], "space", lazy.window.toggle_fullscreen()),

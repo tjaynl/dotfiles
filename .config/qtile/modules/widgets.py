@@ -23,17 +23,18 @@ colors = [
 ]
 
 widget_defaults = dict(
-    font = "FiraCode Nerd Font",
+    font = "Sans Regular",
     fontsize = 12,
     padding = 2,
     background = colors[0],
     decorations = [
         BorderDecoration(
             colour = colors[0],
-            border_width = [8, 0, 7, 0],
+            border_width = [6, 0, 5, 0],
         ),
     ],
 )
+
 extension_defaults = widget_defaults.copy()
 
 group_box_settings = {
@@ -46,10 +47,10 @@ group_box_settings = {
     "highlight_color": colors[2],
     "block_highlight_text_color": colors[6],
     "highlight_method": "block",
-    "this_current_screen_border": colors[14],
+    "this_current_screen_border": colors[10],
     "this_screen_border": colors[2],
-    "other_current_screen_border": colors[14],
-    "other_screen_border": colors[14],
+    "other_current_screen_border": colors[2],
+    "other_screen_border": colors[0],
     "foreground": colors[1],
     "background": colors[14],
     "urgent_border": colors[3],
@@ -57,8 +58,8 @@ group_box_settings = {
 
 text_box_settings = {
     "font": "font-awesome",
-    "fontsize" : 20,
-    "padding" : 8,
+    "fontsize" : 18,
+    "padding" : 4,
 }
 
 rounded_start = {
